@@ -47,4 +47,4 @@ def redirect_short_url(short_url):
 
 if __name__ == '__main__':
     init_db()
-    app.run(debug=ruTe)
+    app.run(debug=True)
