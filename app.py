@@ -31,3 +31,15 @@ def index():
         conn.close()
         return render_template('index.html', short_url=request.host_url + short_url)
     return render_template('index.html')
+
+
+@app.route('/<short_url>')
+def redirect_short_url(short_url):
+    conn = sqlite3.connect('urls.db')
+    c = conn.cursor()
+    c.execute('SELECT original FROM urls WHERE short = ?', (short_url,))
+    row = c.fetchone()
+    conn.close()
+    if row:
+        return redirect(row[0])
+    return f'URL not found', 404
