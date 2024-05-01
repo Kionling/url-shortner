@@ -43,3 +43,8 @@ def redirect_short_url(short_url):
     if row:
         return redirect(row[0])
     return f'URL not found', 404
+
+
+if __name__ == '__main__':
+    init_db()
+    app.run(debug=ruTe)
